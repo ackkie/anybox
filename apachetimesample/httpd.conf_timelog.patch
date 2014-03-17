@@ -1,0 +1,18 @@
+--- httpd.conf.orig	2013-08-02 20:59:13.000000000 +0900
++++ httpd.conf	2014-02-28 16:50:39.104999918 +0900
+@@ -498,6 +498,7 @@
+ LogFormat "%h %l %u %t \"%r\" %>s %b" common
+ LogFormat "%{Referer}i -> %U" referer
+ LogFormat "%{User-agent}i" agent
++LogFormat "%{%FT%T}t %T %>s %s %X %b %a \"%r\" \"%{User-Agent}i\"" time
+ 
+ # "combinedio" includes actual counts of actual bytes received (%I) and sent (%O); this
+ # requires the mod_logio module to be loaded.
+@@ -524,6 +525,7 @@
+ # (Combined Logfile Format), use the following directive:
+ #
+ CustomLog logs/access_log combined
++CustomLog logs/time_log time
+ 
+ #
+ # Optionally add a line containing the server version and virtual host
